@@ -1,0 +1,1 @@
+This directory is composed of a C++ library as well as some exams exercises challenged during "Programming and Laboratory" course. 
