@@ -9,7 +9,7 @@ class person{
 
     public:
         inline person();
-        explicit inline person(string name, uint8_t age) : name(name), age(age){};
+        explicit inline person(const string& name,const uint8_t& age) : name(name), age(age){};
         virtual void greet() = 0; //pure virtual function; To be overrided
 };
 
@@ -18,7 +18,7 @@ class athlete{
 
     public:
         inline athlete();
-        explicit inline athlete(string& sport) : sport(sport){};
+        explicit inline athlete(const string& sport) : sport(sport){};
         inline string get_sport() const{
             return sport;
         }
@@ -29,13 +29,13 @@ class student : public person, public athlete{ //An important C++ Inheritance re
 
     public:
         inline student() : person() {};
-        explicit inline student(string name, uint8_t age, string uni_name,string sport) : person(name,age), athlete(sport), uni_name(uni_name){};
-        inline void greet(){
+        explicit inline student(const string& name,const uint8_t& age,const string& uni_name,const string& sport) : person(name,age), athlete(sport), uni_name(uni_name){};
+        inline void greet() const{
             cout<<"Hi there, I'm a student!"<<"\n";
         }
 };
 
 int main(int argc, char const *argv[])
-{   
+{      
     
 }
