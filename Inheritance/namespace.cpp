@@ -36,6 +36,6 @@ class student : public person, public athlete{ //An important C++ Inheritance re
 };
 
 int main(int argc, char const *argv[])
-{      
+{       
     
 }
