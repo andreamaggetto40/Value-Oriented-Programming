@@ -8,7 +8,7 @@ It showcases a tiny version of the **JDK**, properly following the hierarchy amo
 
 The Java hierarchy is disposed of in the following way:
 
-![](C:\Users\Andrea\Desktop\uni\2nd Year\Coding and Laboratory\Exams\Value-Oriented-Programming\java-transpiler\Java to C++.png)
+![Java to C++](C:\Users\Andrea\Desktop\uni\2nd Year\Coding and Laboratory\Exams\Value-Oriented-Programming\java-transpiler\Java to C++.png)
 
 ## Workflow
 
