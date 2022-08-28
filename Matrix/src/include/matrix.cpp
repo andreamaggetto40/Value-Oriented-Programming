@@ -5,7 +5,7 @@
 
 /**
  * matrix 
- * This library wants to be a compound of the most useful functions to create and manage a matrix
+ * @brief: This library wants to be a compound of the most useful functions to create and manage a matrix
  */
 
 using std::cout; using std::vector; 
@@ -16,7 +16,16 @@ class matrix{
     int rows{},cols{};
 
     public:
+        /** Default constructor
+         * @brief Construct a new matrix object
+         * 
+         */
         inline matrix() = default;
+        /** Parametered constructor
+         * @brief Construct a new matrix object
+         * @param rows : matrix rows
+         * @param cols : matrix cols
+         */
         inline matrix(const int rows, const int cols) : rows(rows), cols(cols){
             assert(rows > 0 and cols > 0);
             items.resize(rows);
@@ -24,6 +33,10 @@ class matrix{
                 items.at(i).resize(cols);
             }
         }
+        /** Copy constructor
+         * @brief Construct a new matrix object
+         * @param to_copy : Matrix to be copied
+         */
         inline matrix(const matrix& to_copy) : rows(to_copy.rows), cols(to_copy.cols){
             items.resize(to_copy.rows);
             for(size_t i{0}; i < rows; ++i){
@@ -33,6 +46,10 @@ class matrix{
                 }
             }
         }
+        /** Transposition of a matrix
+         * @brief Method that builds the transposed matrix, give another one
+         * @return matrix : Transposed matrix
+         */
         inline matrix trasposed() const{
             matrix output{cols, rows};
 
@@ -44,6 +61,10 @@ class matrix{
 
             return output;
         }
+        /** 
+         * @brief Method that fills a matrix with random integer values
+         * 
+         */
         inline void fill_matrix(){
             srand(time(NULL));
             for(size_t i{0}; i < rows; ++i){
@@ -52,6 +73,12 @@ class matrix{
                 }
             }
         }
+        /**
+         * @brief Identity matrix creator method
+         * 
+         * @param size : Size of the matrix (iif size mod 2 = 0 -> it's possibile to create the identity matrix)
+         * @return matrix : Identity matrix
+         */
         inline matrix identity(int size) const{
             matrix output{size,size};
 
@@ -61,6 +88,12 @@ class matrix{
 
             return output;
         }
+        /** 
+         * @brief Method to sum two matrix, and outcome the resulted one
+         * 
+         * @param to_sum : the matrix to add
+         * @return matrix : sum matrix
+         */
         inline matrix sum(const matrix& to_sum) const{
             assert(rows == to_sum.rows and cols == to_sum.cols);
             matrix output{rows,rows};
@@ -73,6 +106,14 @@ class matrix{
 
             return output;
         }
+        inline matrix product(const matrix& to_mul) const{
+            assert(cols == to_mul.rows);
+
+        }
+        /**
+         * @brief Simple method that prints a matrix
+         * 
+         */
         inline void print() const{
             for(size_t i{0}; i < rows; ++i){
                 for(size_t j{0}; j < cols; ++j){
