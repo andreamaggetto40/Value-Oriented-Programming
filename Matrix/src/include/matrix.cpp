@@ -2,7 +2,6 @@
 #include <vector>
 #include <time.h>
 #include <cassert>
-
 /**
  * matrix 
  * @brief: This library wants to be a compound of the most useful functions to create and manage a matrix
@@ -108,7 +107,22 @@ class matrix{
         }
         inline matrix product(const matrix& to_mul) const{
             assert(cols == to_mul.rows);
+            //TODO
 
+        }
+        /**
+         * @brief Method that outputs a matrix trace
+         * 
+         * @return int: The calculated trace
+         */
+        inline int trace() const{
+            int output{items.at(0).at(0)},i{0},j{i};
+
+            for(int counter{0}; counter < rows; ++i,++j,++counter){
+                output += items.at(i).at(j);
+            }
+
+            return output;
         }
         /**
          * @brief Simple method that prints a matrix
@@ -126,5 +140,7 @@ class matrix{
 
 int main(int argc, char const *argv[])
 {                                               
-    
+    matrix first{3,5}; first.fill_matrix(); first.print();
+
+    cout<<first.trace() <<"\n";
 }
