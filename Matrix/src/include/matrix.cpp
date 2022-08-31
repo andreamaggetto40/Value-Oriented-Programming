@@ -116,9 +116,9 @@ class matrix{
          * @return int: The calculated trace
          */
         inline int trace() const{
-            int output{items.at(0).at(0)},i{0},j{i};
+            int output{items.at(0).at(0)},i{1},j{1};
 
-            for(int counter{0}; counter < rows; ++i,++j,++counter){
+            for(int counter{1}; counter < rows; ++i,++j,++counter){
                 output += items.at(i).at(j);
             }
 
