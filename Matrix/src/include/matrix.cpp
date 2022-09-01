@@ -133,7 +133,7 @@ class matrix{
         /**
          * @brief scalar product between a matrix and a real numeric value
          * 
-         * @param scalar : n C R
+         * @param scalar : any n C R
          */
         inline void scalar_product(const int& scalar){
             for(size_t i{0}; i < rows; ++i){
