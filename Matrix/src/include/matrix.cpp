@@ -106,6 +106,22 @@ class matrix{
             return output;
         }
         /**
+         * @brief Get the Matrix rows
+         * 
+         * @return size_t : rows number
+         */
+        inline size_t get_rows() const{
+            return rows;
+        }
+        /**
+         * @brief Get the Matrix cols
+         * 
+         * @return size_t : cols number
+         */
+        inline size_t get_cols() const{
+            return cols;
+        }
+        /**
          * @brief Method that calculates the product matrix
          * 
          * @param to_mul : Matrix to multiply
@@ -113,9 +129,18 @@ class matrix{
          */
         inline matrix product(const matrix& to_mul) const{
             assert(cols == to_mul.rows);
-            matrix output{rows, to_mul.cols}; int amount{0};
-
-
+        }
+        /**
+         * @brief scalar product between a matrix and a real numeric value
+         * 
+         * @param scalar : n C R
+         */
+        inline void scalar_product(const int& scalar){
+            for(size_t i{0}; i < rows; ++i){
+                for(size_t j{0}; j < cols; ++j){
+                    items.at(i).at(j) *= scalar;
+                }
+            }
         }
         /**
          * @brief Method that outputs a matrix trace
@@ -146,6 +171,6 @@ class matrix{
 };
 
 int main(int argc, char const *argv[])
-{                                               
+{                                                   
 
 }
