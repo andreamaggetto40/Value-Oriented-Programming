@@ -115,7 +115,7 @@ class matrix{
             assert(cols == to_mul.rows);
             matrix output{rows, to_mul.cols}; int amount{0};
 
-            
+
         }
         /**
          * @brief Method that outputs a matrix trace
@@ -123,15 +123,9 @@ class matrix{
          * @return int: The calculated trace
          */
         inline int trace() const{
-<<<<<<< HEAD
             int output{items.at(0).at(0) + items.at(rows - 1).at(rows - 1)};
 
             for(int counter{1}, i{1}, j {1}; counter < rows - 1; ++counter, ++i, ++j){
-=======
-            int output{items.at(0).at(0)},i{1},j{1};
-
-            for(int counter{1}; counter < rows; ++i,++j,++counter){
->>>>>>> 3650f71622c49f1d0bd33f3c25c66afd87431f5b
                 output += items.at(i).at(j);
             }
 
