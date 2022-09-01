@@ -105,10 +105,17 @@ class matrix{
 
             return output;
         }
+        /**
+         * @brief Method that calculates the product matrix
+         * 
+         * @param to_mul : Matrix to multiply
+         * @return matrix : Product matrix
+         */
         inline matrix product(const matrix& to_mul) const{
             assert(cols == to_mul.rows);
-            //TODO
+            matrix output{rows, to_mul.cols}; int amount{0};
 
+            
         }
         /**
          * @brief Method that outputs a matrix trace
@@ -116,9 +123,9 @@ class matrix{
          * @return int: The calculated trace
          */
         inline int trace() const{
-            int output{items.at(0).at(0)},i{0},j{i};
+            int output{items.at(0).at(0) + items.at(rows - 1).at(rows - 1)};
 
-            for(int counter{0}; counter < rows; ++i,++j,++counter){
+            for(int counter{1}, i{1}, j {1}; counter < rows - 1; ++counter, ++i, ++j){
                 output += items.at(i).at(j);
             }
 
