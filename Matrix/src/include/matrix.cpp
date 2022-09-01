@@ -129,6 +129,16 @@ class matrix{
          */
         inline matrix product(const matrix& to_mul) const{
             assert(cols == to_mul.rows);
+            matrix output{rows, to_mul.cols}; int output{0};
+            //TODO
+        }
+        /**
+         * @brief Method that calculates the matrix determinant
+         * 
+         * @return int : Determinant
+         */
+        inline int determinant() const{
+            //TODO
         }
         /**
          * @brief scalar product between a matrix and a real numeric value
