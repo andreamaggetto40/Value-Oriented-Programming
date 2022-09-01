@@ -142,12 +142,11 @@ class matrix{
                 }
                 cout<<"\n";
             }
-        }
+
+
 };
 
 int main(int argc, char const *argv[])
 {                                               
-    matrix first{3,5}; first.fill_matrix(); first.print();
-
-    cout<<first.trace() <<"\n";
+    
 }
