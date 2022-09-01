@@ -10,8 +10,7 @@
 using std::cout; using std::vector; 
 
 class matrix{
-    using vect = vector<vector<int>>;
-    vect items;
+    vector<vector<int>> items{};
     int rows{},cols{};
 
     public:
