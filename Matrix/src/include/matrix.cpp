@@ -142,11 +142,10 @@ class matrix{
                 }
                 cout<<"\n";
             }
-
-
+        }
 };
 
 int main(int argc, char const *argv[])
 {                                               
-    
+
 }
