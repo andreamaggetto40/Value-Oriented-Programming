@@ -10,7 +10,7 @@ LDFLAGS =
 # Makefile settings - Can be customized.
 APPNAME = matrix
 EXT = .cpp
-SRCDIR = src/include
+SRCDIR = src
 OBJDIR = obj
 
 ############## Do not change anything from here downwards! #############

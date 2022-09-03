@@ -195,6 +195,6 @@ class matrix{
 };
 
 int main(int argc, char const *argv[])
-{                                                   
-    cout<<"Hello world!" <<"\n";
+{                                                       
+    
 }
