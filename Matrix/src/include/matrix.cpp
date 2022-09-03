@@ -128,8 +128,22 @@ class matrix{
          */
         inline matrix product(const matrix& to_mul) const{
             assert(cols == to_mul.rows);
-            matrix output{rows, to_mul.cols}; int output{0};
-            //TODO
+            matrix product_matrix{rows,to_mul.cols};
+
+            unsigned int prod_rows{0},prod_cols{0}; int mul{0};
+
+            for(size_t i{0}; i < rows; ++i){
+                for(unsigned int counter{0}; counter < rows; ++counter){
+                    for(size_t j{0}; j < cols; ++j){
+                        mul += items.at(i).at(j) * to_mul.items.at(j).at(counter);
+                    }
+                    product_matrix.items.at(prod_rows).at(prod_cols) = mul;
+                    mul = 0; ++prod_cols;
+                }
+                mul = prod_cols = 0; ++prod_rows;
+            }
+
+            return product_matrix;
         }
         /**
          * @brief Method that calculates the matrix determinant
@@ -137,14 +151,15 @@ class matrix{
          * @return int : Determinant
          */
         inline int determinant() const{
-            //TODO
+            assert(rows == cols);
+
         }
         /**
          * @brief scalar product between a matrix and a real numeric value
          * 
          * @param scalar : any n C R
          */
-        inline void scalar_product(const int& scalar){
+        inline void for_scalar_product(const int& scalar){
             for(size_t i{0}; i < rows; ++i){
                 for(size_t j{0}; j < cols; ++j){
                     items.at(i).at(j) *= scalar;
@@ -181,5 +196,5 @@ class matrix{
 
 int main(int argc, char const *argv[])
 {                                                   
-
+    
 }
