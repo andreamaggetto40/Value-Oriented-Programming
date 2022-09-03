@@ -181,20 +181,32 @@ class matrix{
             return output;
         }
         /**
-         * @brief Simple method that prints a matrix
+         * @brief Simple method that prints a matrix. The above code snippet allows to print matrix using rows as index
+         * The second one allows the same thing, but using columns as index to print the matrix
          * 
          */
         inline void print() const{
+            //rows
             for(size_t i{0}; i < rows; ++i){
                 for(size_t j{0}; j < cols; ++j){
-                    cout<<items.at(i).at(j) <<" ";
+                    cout<<items.at(i).at(j) << " ";
+                }
+                cout<<"\n";
+            }
+            cout<<"\n";
+
+            //columns
+            for(size_t i{0}; i < cols; ++i){
+                for(size_t j{0}; j < rows; ++j){
+                    cout<<items.at(j).at(i) << " ";
                 }
                 cout<<"\n";
             }
         }
+
 };
 
 int main(int argc, char const *argv[])
-{                                                       
+{                                                               
     
 }
