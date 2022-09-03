@@ -130,17 +130,17 @@ class matrix{
             assert(cols == to_mul.rows);
             matrix product_matrix{rows,to_mul.cols};
 
-            unsigned int prod_rows{0},prod_cols{0}; int mul{0};
+            int mul{0};
 
             for(size_t i{0}; i < rows; ++i){
                 for(unsigned int counter{0}; counter < rows; ++counter){
                     for(size_t j{0}; j < cols; ++j){
                         mul += items.at(i).at(j) * to_mul.items.at(j).at(counter);
                     }
-                    product_matrix.items.at(prod_rows).at(prod_cols) = mul;
-                    mul = 0; ++prod_cols;
+                    product_matrix.items.at(i).at(counter) = mul;
+                    mul = 0;
                 }
-                mul = prod_cols = 0; ++prod_rows;
+                mul = 0; 
             }
 
             return product_matrix;
@@ -196,5 +196,8 @@ class matrix{
 
 int main(int argc, char const *argv[])
 {                                                   
-    
+    matrix first{2,3}; first.fill_matrix(); first.print(); cout<<"\n";
+    matrix second{3,2}; second.fill_matrix(); second.print();
+
+    (first.product(second)).print();
 }
