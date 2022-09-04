@@ -181,7 +181,7 @@ class matrix{
             return output;
         }
         /**
-         * @brief Simple method that prints a matrix. The above code snippet allows to print matrix using rows as index
+         * @brief Simple method that prints a matrix. The first code snippet allows to print matrix using rows as index
          * The second one allows the same thing, but using columns as index to print the matrix
          * 
          */
@@ -207,6 +207,6 @@ class matrix{
 };
 
 int main(int argc, char const *argv[])
-{                                                               
+{                                                                   
     
 }
