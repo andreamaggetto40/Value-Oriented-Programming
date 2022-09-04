@@ -13,6 +13,16 @@ class matrix{
     vector<vector<int>> items{};
     int rows{},cols{};
 
+    bool is_no_zero(const vector<int>& vect){
+        bool check{true};
+    
+        for(size_t i{0}; i < vect.size() and check; ++i){
+            check &= vect.at(i);
+        }
+
+        return check;
+    }
+
     public:
         /** Default constructor
          * @brief Construct a new matrix object
@@ -43,6 +53,41 @@ class matrix{
                     items.at(i).at(j) = to_copy.items.at(i).at(j);
                 }
             }
+        }
+        /**
+         * @brief Method to calculate main diagonal of a matrix. 
+         * A matrix main diagonal is defined as the values set : (x,y) -> x == y
+         * @return Matrix diagonal
+         */
+        inline vector<int> get_main_diagonal() const{
+            vector<int> diagonal{}; diagonal.resize(rows);
+
+            for(size_t i{0}; i < rows; ++i){
+                diagonal.at(i) = items.at(i).at(i);
+            }
+
+            return diagonal;
+        }
+        /**
+         * @brief Method to check whether a matrix is diagonal
+         * A matrix is diagonal iif for any n,m : n = (x,y), x == y and m = (a,b), a # b -> n # 0 and m = 0
+         * @return bool : check whether matrix is diagonal or not.
+         */
+        inline bool is_diagonal() {
+            bool check{true}; 
+
+            if(is_no_zero(get_main_diagonal())){
+                for(size_t i{0}; i < rows and check; ++i){
+                    for(size_t j{0}; j < cols; ++j){
+                        if(i != j){
+                            check &= !(items.at(i).at(j));
+                        }
+                    }
+                }
+            }
+            else check = false;
+
+            return check;
         }
         /** Transposition of a matrix
          * @brief Method that builds the transposed matrix, give another one
@@ -196,12 +241,12 @@ class matrix{
             cout<<"\n";
 
             //columns
-            for(size_t i{0}; i < cols; ++i){
+            /*for(size_t i{0}; i < cols; ++i){
                 for(size_t j{0}; j < rows; ++j){
                     cout<<items.at(j).at(i) << " ";
                 }
                 cout<<"\n";
-            }
+            }*/
         }
 
 };
@@ -209,4 +254,4 @@ class matrix{
 int main(int argc, char const *argv[])
 {                                                                   
     
-}
+}   
