@@ -104,7 +104,5 @@ class polynomial{
 
 int main(int argc, char const *argv[])
 {                
-    polynomial first{6}; first.delete_null(); first.print();
-
     
 }
