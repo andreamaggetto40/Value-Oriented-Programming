@@ -226,6 +226,40 @@ class matrix{
             return output;
         }
         /**
+         * @brief Method that returns a bool based on whether the matrix is triangular or not
+         * It checks if the given matrix is either upper triangular or lower triangular
+         * 
+         * @return bool: True if triangular, false otherwise
+         */
+        inline bool is_triangular() const{
+            assert(rows == cols);
+            bool check{true};
+
+            for(size_t i{0}; i < rows and check; ++i){
+                if(!i) check &= items.at(i).at(i);
+                else{
+                    for(size_t j{0}; j < i; ++j){
+                        check &= !(items.at(i).at(j));
+                    }
+                }
+            }
+
+            if(!check){
+                check = true; size_t reverse_row{rows - 1};
+
+                for(size_t i{reverse_row}; i >= 0 and check; --i){
+                    if(!i) check &= items.at(i).at(i);
+                    else{
+                        for(size_t j{reverse_row}; j > i; --j){
+                            check &= !(items.at(i).at(j));
+                        }
+                    }
+                }
+            }
+
+            return check;
+        }
+        /**
          * @brief Simple method that prints a matrix. The first code snippet allows to print matrix using rows as index
          * The second one allows the same thing, but using columns as index to print the matrix
          * 
@@ -252,6 +286,6 @@ class matrix{
 };
 
 int main(int argc, char const *argv[])
-{                                                                   
+{                                                                              
     
 }   
