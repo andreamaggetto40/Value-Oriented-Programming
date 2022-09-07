@@ -1,12 +1,13 @@
 #include <iostream>
 #include <vector>
 
-using std::cout; using std::endl; using std::vector; using std::pair;
+using std::cout; using std::vector; using std::pair;
 
 //this class is intended to create a data structure for a math polynomial management 
 
 class polynomial{
     vector<pair<int,int>> data{};
+    unsigned int degree{};
 
     int pow(int number, int exp) const{
         int amount{number};
@@ -30,6 +31,18 @@ class polynomial{
                 data.at(i).second = to_copy.data.at(i).second;
             }
         }
+        inline polynomial(const unsigned int& degree) : degree(degree){
+            data.resize(degree);
+            
+            for(size_t i{0}; i < data.size(); ++i){
+                if(!i){
+                    data.at(i).first = 1; data.at(i).second = 0;
+                }
+                else{
+                    data.at(i).first = 0; data.at(i).second = i;
+                }
+            }
+        }
 
         inline void set(int& coeff, int& exp) {
             if(data.size() < exp) data.resize(exp);
@@ -37,7 +50,7 @@ class polynomial{
             data.at(exp).first = coeff; data.at(exp).second = exp;
         }   
 
-        inline unsigned int degree() const{
+        inline unsigned int max_degree() const{
             int max{0};
 
             for(size_t i{1}; i < data.size(); ++i){
@@ -59,6 +72,16 @@ class polynomial{
             return output;
         }
 
+        inline void delete_null(){
+            vector<pair<int,int>> output{};
+
+            for(pair<int,int> it : data){
+                if(it.first) output.push_back(it);
+            }
+
+            data = output;
+        }
+
         inline int evaluate(int& x) const{
             int total{0};
 
@@ -73,15 +96,15 @@ class polynomial{
         }
 
         inline void print() const{
-            int sz{data.size()};
-
-            for(size_t i{0}; i < sz; ++i){
-                cout<<data.at(i).first << " " << data.at(i).second << " / ";
+            for(pair<int,int> it : data){
+                cout<<it.first << " " <<it.second <<"\n";
             }
         }
 };
 
 int main(int argc, char const *argv[])
-{               
+{                
+    polynomial first{6}; first.delete_null(); first.print();
+
     
 }
