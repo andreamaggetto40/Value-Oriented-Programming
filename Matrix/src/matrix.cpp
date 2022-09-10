@@ -28,13 +28,13 @@ class matrix{
          * @brief Construct a new matrix object
          * 
          */
-        inline matrix() = default;
+        matrix() = default;
         /** Parametered constructor
          * @brief Construct a new matrix object
          * @param rows : matrix rows
          * @param cols : matrix cols
          */
-        inline matrix(const int rows, const int cols) : rows(rows), cols(cols){
+        matrix(const int rows, const int cols) : rows(rows), cols(cols){
             assert(rows > 0 and cols > 0);
             items.resize(rows);
             for(size_t i{0}; i < rows; ++i){
@@ -45,7 +45,7 @@ class matrix{
          * @brief Construct a new matrix object
          * @param to_copy : Matrix to be copied
          */
-        inline matrix(const matrix& to_copy) : rows(to_copy.rows), cols(to_copy.cols){
+        matrix(const matrix& to_copy) : rows(to_copy.rows), cols(to_copy.cols){
             items.resize(to_copy.rows);
             for(size_t i{0}; i < rows; ++i){
                 items.at(i).resize(cols);
@@ -59,7 +59,7 @@ class matrix{
          * A matrix main diagonal is defined as the values set : (x,y) -> x == y
          * @return Matrix diagonal
          */
-        inline vector<int> get_main_diagonal() const{
+        vector<int> get_main_diagonal() const{
             vector<int> diagonal{}; diagonal.resize(rows);
 
             for(size_t i{0}; i < rows; ++i){
@@ -73,7 +73,7 @@ class matrix{
          * A matrix is diagonal iif for any n,m : n = (x,y), x == y and m = (a,b), a # b -> n # 0 and m = 0
          * @return bool : check whether matrix is diagonal or not.
          */
-        inline bool is_diagonal() {
+        bool is_diagonal() {
             bool check{true}; 
 
             if(is_no_zero(get_main_diagonal())){
@@ -93,7 +93,7 @@ class matrix{
          * @brief Method that builds the transposed matrix, give another one
          * @return matrix : Transposed matrix
          */
-        inline matrix trasposed() const{
+        matrix trasposed() const{
             matrix output{cols, rows};
 
             for(size_t i{0}; i < rows; ++i){
@@ -108,7 +108,7 @@ class matrix{
          * @brief Method that fills a matrix with random integer values
          * 
          */
-        inline void fill_matrix(){
+        void fill_matrix(){
             srand(time(NULL));
             for(size_t i{0}; i < rows; ++i){
                 for(size_t j{0}; j < cols; ++j){
@@ -122,7 +122,7 @@ class matrix{
          * @param size : Size of the matrix (iif size mod 2 = 0 -> it's possibile to create the identity matrix)
          * @return matrix : Identity matrix
          */
-        inline matrix identity(int size) const{
+        matrix identity(int size) const{
             matrix output{size,size};
 
             for(size_t i{0}; i < size; ++i){
@@ -137,7 +137,7 @@ class matrix{
          * @param to_sum : the matrix to add
          * @return matrix : sum matrix
          */
-        inline matrix sum(const matrix& to_sum) const{
+        matrix sum(const matrix& to_sum) const{
             assert(rows == to_sum.rows and cols == to_sum.cols);
             matrix output{rows,rows};
 
@@ -154,7 +154,7 @@ class matrix{
          * 
          * @return size_t : rows number
          */
-        inline size_t get_rows() const{
+        size_t get_rows() const{
             return rows;
         }
         /**
@@ -162,7 +162,7 @@ class matrix{
          * 
          * @return size_t : cols number
          */
-        inline size_t get_cols() const{
+        size_t get_cols() const{
             return cols;
         }
         /**
@@ -171,7 +171,7 @@ class matrix{
          * @param to_mul : Matrix to multiply
          * @return matrix : Product matrix
          */
-        inline matrix product(const matrix& to_mul) const{
+        matrix product(const matrix& to_mul) const{
             assert(cols == to_mul.rows);
             matrix product_matrix{rows,to_mul.cols};
 
@@ -195,7 +195,7 @@ class matrix{
          * 
          * @return int : Determinant
          */
-        inline int determinant() const{
+        int determinant() const{
             assert(rows == cols);
 
         }
@@ -204,7 +204,7 @@ class matrix{
          * 
          * @param scalar : any n C R
          */
-        inline void for_scalar_product(const int& scalar){
+        void for_scalar_product(const int& scalar){
             for(size_t i{0}; i < rows; ++i){
                 for(size_t j{0}; j < cols; ++j){
                     items.at(i).at(j) *= scalar;
@@ -216,7 +216,7 @@ class matrix{
          * 
          * @return int: The calculated trace
          */
-        inline int trace() const{
+        int trace() const{
             int output{items.at(0).at(0) + items.at(rows - 1).at(rows - 1)};
 
             for(int counter{1}, i{1}, j {1}; counter < rows - 1; ++counter, ++i, ++j){
@@ -231,7 +231,7 @@ class matrix{
          * 
          * @return bool: True if triangular, false otherwise
          */
-        inline bool is_triangular() const{
+        bool is_triangular() const{
             assert(rows == cols);
             bool check{true};
 
@@ -264,7 +264,7 @@ class matrix{
          * The second one allows the same thing, but using columns as index to print the matrix
          * 
          */
-        inline void print() const{
+        void print() const{
             //rows
             for(size_t i{0}; i < rows; ++i){
                 for(size_t j{0}; j < cols; ++j){
