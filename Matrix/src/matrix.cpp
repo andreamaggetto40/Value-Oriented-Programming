@@ -36,23 +36,14 @@ class matrix{
          */
         matrix(const int rows, const int cols) : rows(rows), cols(cols){
             assert(rows > 0 and cols > 0);
-            items.resize(rows);
-            for(size_t i{0}; i < rows; ++i){
-                items.at(i).resize(cols);
-            }
+            items = vector<vector<int>>(rows, vector<int>(cols,0));
         }
         /** Copy constructor
          * @brief Construct a new matrix object
          * @param to_copy : Matrix to be copied
          */
         matrix(const matrix& to_copy) : rows(to_copy.rows), cols(to_copy.cols){
-            items.resize(to_copy.rows);
-            for(size_t i{0}; i < rows; ++i){
-                items.at(i).resize(cols);
-                for(size_t j{0}; j < cols; ++j){
-                    items.at(i).at(j) = to_copy.items.at(i).at(j);
-                }
-            }
+            items = to_copy.items;
         }
         /**
          * @brief Method to calculate main diagonal of a matrix. 
@@ -60,13 +51,13 @@ class matrix{
          * @return Matrix diagonal
          */
         vector<int> get_main_diagonal() const{
-            vector<int> diagonal{}; diagonal.resize(rows);
+            vector<int> output{items.at(0).at(0)};
 
-            for(size_t i{0}; i < rows; ++i){
-                diagonal.at(i) = items.at(i).at(i);
+            for(size_t i{1}; i < rows; ++i){
+                output.push_back(items.at(i).at(i));
             }
 
-            return diagonal;
+            return output;
         }
         /**
          * @brief Method to check whether a matrix is diagonal
@@ -123,6 +114,7 @@ class matrix{
          * @return matrix : Identity matrix
          */
         matrix identity(int size) const{
+            assert(rows == cols);
             matrix output{size,size};
 
             for(size_t i{0}; i < size; ++i){
@@ -196,8 +188,7 @@ class matrix{
          * @return int : Determinant
          */
         int determinant() const{
-            assert(rows == cols);
-
+            return 0;
         }
         /**
          * @brief scalar product between a matrix and a real numeric value
@@ -205,9 +196,9 @@ class matrix{
          * @param scalar : any n C R
          */
         void for_scalar_product(const int& scalar){
-            for(size_t i{0}; i < rows; ++i){
-                for(size_t j{0}; j < cols; ++j){
-                    items.at(i).at(j) *= scalar;
+            for(vector<int> r : items){
+                for(int c : r){
+                    r.at(c) *= scalar;
                 }
             }
         }
@@ -266,13 +257,12 @@ class matrix{
          */
         void print() const{
             //rows
-            for(size_t i{0}; i < rows; ++i){
-                for(size_t j{0}; j < cols; ++j){
-                    cout<<items.at(i).at(j) << " ";
+            for(const vector<int> r : items){
+                for(int c : r){
+                    cout << r.at(c) << " ";
                 }
-                cout<<"\n";
+                cout << "\n";
             }
-            cout<<"\n";
 
             //columns
             /*for(size_t i{0}; i < cols; ++i){
@@ -287,5 +277,5 @@ class matrix{
 
 int main(int argc, char const *argv[])
 {                                                                              
-    
+
 }   
