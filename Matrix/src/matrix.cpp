@@ -11,7 +11,7 @@ using std::cout; using std::vector;
 
 class matrix{
     vector<vector<int>> items{};
-    int rows{},cols{};
+    size_t rows{},cols{};
 
     bool is_no_zero(const vector<int>& vect){
         bool check{true};
@@ -34,9 +34,15 @@ class matrix{
          * @param rows : matrix rows
          * @param cols : matrix cols
          */
-        matrix(const int rows, const int cols) : rows(rows), cols(cols){
-            assert(rows > 0 and cols > 0);
+        matrix(const size_t& rows, const size_t& cols) : rows(rows), cols(cols){
             items = vector<vector<int>>(rows, vector<int>(cols,0));
+
+            srand(time(nullptr));
+            for(size_t i{0}; i < rows; ++i){
+                for(size_t j{0}; j < cols; ++j){
+                    items.at(i).at(j) = rand() % 100 + 1;
+                }
+            }
         }
         /** Copy constructor
          * @brief Construct a new matrix object
@@ -94,18 +100,6 @@ class matrix{
             }
 
             return output;
-        }
-        /** 
-         * @brief Method that fills a matrix with random integer values
-         * 
-         */
-        void fill_matrix(){
-            srand(time(NULL));
-            for(size_t i{0}; i < rows; ++i){
-                for(size_t j{0}; j < cols; ++j){
-                    items.at(i).at(j) = rand() % 100;
-                }
-            }
         }
         /**
          * @brief Identity matrix creator method
@@ -196,9 +190,9 @@ class matrix{
          * @param scalar : any n C R
          */
         void for_scalar_product(const int& scalar){
-            for(vector<int> r : items){
-                for(int c : r){
-                    r.at(c) *= scalar;
+            for(size_t i{0}; i < rows; ++i){
+                for(size_t j{0}; j < cols; ++j){
+                    items.at(i).at(j) *= scalar;
                 }
             }
         }
@@ -257,13 +251,12 @@ class matrix{
          */
         void print() const{
             //rows
-            for(const vector<int> r : items){
-                for(int c : r){
-                    cout << r.at(c) << " ";
+            for(size_t i{0}; i < rows; ++i){
+                for(size_t j{0}; j < cols; ++j){
+                    cout<<items.at(i).at(j) <<" ";
                 }
-                cout << "\n";
+                cout<<"\n";
             }
-
             //columns
             /*for(size_t i{0}; i < cols; ++i){
                 for(size_t j{0}; j < rows; ++j){
@@ -276,6 +269,6 @@ class matrix{
 };
 
 int main(int argc, char const *argv[])
-{                                                                              
-
+{                                                                                   
+    
 }   
