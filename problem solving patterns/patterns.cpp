@@ -66,7 +66,6 @@ bool binary_search(const vector<int>& v, const int& value){
             bool check{false};
             if(value < middle_value){
                 for(size_t i{0}; i < middle_value and !check; ++i) check |= (v.at(i) == value);
-
             }
             else{
                 for(size_t i{middle_value + 1}; i < v.size() and !check; ++i) check |= (v.at(i) == value);
