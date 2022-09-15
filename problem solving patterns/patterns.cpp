@@ -52,4 +52,31 @@ bool is_there(const vector<int>& first, const vector<int>& second){
     }
 }
 
+/**
+ * @brief Divide and Conquer through a simple binary search algorithm. 
+ * The Divide and Conquer pattern is helpful when it comes to divide a bigger problem in smaller ones, computing a result and then compounding to get the final result.
+ * One of the common algorithms that lies in this class is Binary Search; A default search would have O(n) complexity whereas with an efficient BS algorithm it's reduced up to O(log(n))
+ * 
+ */
+bool binary_search(const vector<int>& v, const int& value){ 
+    if(v.size()){
+        int middle_value{v.at(v.size() / 2)};   
+        if(middle_value == value) return true;
+        else{
+            bool check{false};
+            if(value < middle_value){
+                for(size_t i{0}; i < middle_value and !check; ++i) check |= (v.at(i) == value);
+
+            }
+            else{
+                for(size_t i{middle_value + 1}; i < v.size() and !check; ++i) check |= (v.at(i) == value);
+            }
+            return check;
+        }
+    }
+    return false;
+}
+
+
+
 
