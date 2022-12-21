@@ -1,5 +1,12 @@
 #include "person.hpp"
 
+/*
+    The .cpp file contains the actual object implementation.
+    It's divided into two main parts:
+        impl: Struct (therefore, the access method is public by default), which contains all the object and functions, If needed
+        method references: The actual methods implementation of the object
+*/
+
 struct person::impl{
     std::string name{}; unsigned int age{0};
 };
